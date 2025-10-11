@@ -51,27 +51,6 @@ const GitHubSection = () => {
                   Building innovative solutions one commit at a time
                 </p>
 
-                <div className="flex flex-wrap gap-6 justify-center md:justify-start mb-6">
-                  <div className="flex items-center gap-2">
-                    <Star className="text-primary" size={20} />
-                    <span className="text-foreground font-semibold">
-                      120+ Stars
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <GitFork className="text-primary" size={20} />
-                    <span className="text-foreground font-semibold">
-                      45+ Forks
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Github className="text-primary" size={20} />
-                    <span className="text-foreground font-semibold">
-                      30+ Repos
-                    </span>
-                  </div>
-                </div>
-
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary-hover text-primary-foreground font-semibold"
@@ -106,12 +85,8 @@ const GitHubSection = () => {
                   <div>
                     <h5 className="font-semibold text-foreground">Larn2Pay</h5>
                     <p className="text-sm text-muted-foreground">
-                      Curated list of web development resources
+                      EMI School Fees Collection Web App
                     </p>
-                    <div className="flex gap-3 mt-2 text-xs text-muted-foreground">
-                      <span>⭐ 85</span>
-                      <span>🍴 22</span>
-                    </div>
                   </div>
                 </div>
               </div>

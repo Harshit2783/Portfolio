@@ -11,20 +11,20 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
+      title: 'Larn-2-Pay',
       description:
-        'A full-stack e-commerce application with user authentication, product management, shopping cart, and secure payment integration. Built with modern best practices and responsive design.',
+        'A digital platform simplifying fee payments for educational institutions and parents by offering EMI solutions and secure payment integration. It offers a centralized platform for handling administrative tasks across different user roles like Super Admin, Institute Admin, Student, Franchise Admin, Sales, and KYC Support. The system includes monthly payment reminders and tracks total, pending, and completed payments.',
       techStack: ['React', 'Node.js', 'MongoDB', 'Express', 'Tailwind CSS', 'Stripe'],
-      github: 'https://github.com/demo/ecommerce-platform',
-      demo: 'https://demo-ecommerce.vercel.app',
+      github: 'https://github.com/Techori/Learn2pay',
+      demo: 'https://www.larn2pay.com/',
     },
     {
-      title: 'Task Management App',
+      title: 'Tally Integrated POS System',
       description:
-        'A collaborative task management application with real-time updates, drag-and-drop functionality, team workspaces, and deadline tracking. Perfect for agile teams and personal productivity.',
+        'Full-stack web application integrating with Tally Prime ERP for multi-company inventory management. Features include real-time stock synchronization, GST-compliant billing with custom PDF templates, automated pricing calculations, and interactive sales analytics dashboards. Reduced manual data entry by 80% through bidirectional Tally integration.',
       techStack: ['React', 'TypeScript', 'Firebase', 'Tailwind CSS', 'Framer Motion'],
-      github: 'https://github.com/demo/task-manager',
-      demo: 'https://demo-taskmanager.vercel.app',
+      github: 'https://github.com/Harshit2783/tally-integrated-pos-system',
+      // demo: 'https://demo-taskmanager.vercel.app',
     },
   ];
 
@@ -176,23 +176,25 @@ const Projects = () => {
                       </a>
                     </Button>
                   </motion.div>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium group-hover:shadow-lg transition-all duration-300"
-                      asChild
-                    >
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                  {project.demo && (
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium group-hover:shadow-lg transition-all duration-300"
+                        asChild
                       >
-                        <ExternalLink className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                        Live Demo
-                      </a>
-                    </Button>
-                  </motion.div>
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                          Live Demo
+                        </a>
+                      </Button>
+                    </motion.div>
+                  )}
                 </motion.div>
               </div>
             </motion.div>
