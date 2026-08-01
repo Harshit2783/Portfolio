@@ -11,6 +11,13 @@ const Projects = () => {
 
   const projects = [
     {
+      title: 'Taskify – JWT Authenticated Task Management REST API',
+      description:
+        'Developed a RESTful backend with JWT-based authentication and protected API routes. Implemented authentication middleware, bcrypt password hashing, centralized error handling, and request validation. Designed MongoDB schemas and CRUD APIs for efficient task and user management. Tested and validated API endpoints using Postman.',
+      techStack: ['Node.js', 'Express.js', 'MongoDB', 'JWT', 'Postman'],
+      github: 'https://github.com/Harshit2783/taskify-api',
+    },
+    {
       title: 'Larn-2-Pay',
       description:
         'A digital platform simplifying fee payments for educational institutions and parents by offering EMI solutions and secure payment integration. It offers a centralized platform for handling administrative tasks across different user roles like Super Admin, Institute Admin, Student, Franchise Admin, Sales, and KYC Support. The system includes monthly payment reminders and tracks total, pending, and completed payments.',
@@ -176,25 +183,6 @@ const Projects = () => {
                       </a>
                     </Button>
                   </motion.div>
-                  {project.demo && (
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium group-hover:shadow-lg transition-all duration-300"
-                        asChild
-                      >
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                          Live Demo
-                        </a>
-                      </Button>
-                    </motion.div>
-                  )}
                 </motion.div>
               </div>
             </motion.div>

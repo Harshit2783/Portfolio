@@ -114,7 +114,16 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.22);
+    color: hsl(var(--foreground));
   }
 }

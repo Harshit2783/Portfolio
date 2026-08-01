@@ -38,26 +38,25 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-card/95 backdrop-blur-md shadow-md' : 'bg-transparent'
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'border-b border-border/70 bg-card/90 shadow-sm backdrop-blur-md' : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex h-16 items-center justify-between">
           <motion.a
             href="#home"
             onClick={(e) => {
               e.preventDefault();
               scrollToSection('#home');
             }}
-            className="text-xl font-bold text-primary"
-            whileHover={{ scale: 1.05 }}
+            className="text-lg font-semibold tracking-[0.24em] text-primary"
+            whileHover={{ scale: 1.03 }}
           >
-            Portfolio
+            HARSHIT
           </motion.a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden items-center space-x-8 md:flex">
             {navLinks.map((link) => (
               <motion.a
                 key={link.name}
@@ -66,37 +65,35 @@ const Navbar = () => {
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                className="font-medium text-foreground transition-colors duration-200 hover:text-primary"
                 whileHover={{ y: -2 }}
               >
                 {link.name}
               </motion.a>
             ))}
-            
-            {/* Theme Toggle */}
+
             <motion.button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-lg bg-secondary hover:bg-accent transition-colors duration-200"
+              className="rounded-lg bg-secondary p-2 transition-colors duration-200 hover:bg-accent"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun size={20} className="text-foreground" /> : <Moon size={20} className="text-foreground" />}
+              {theme === 'dark' ? <Sun size={18} className="text-foreground" /> : <Moon size={18} className="text-foreground" />}
             </motion.button>
           </div>
 
-          {/* Mobile Menu Button & Theme Toggle */}
-          <div className="md:hidden flex items-center space-x-2">
+          <div className="flex items-center space-x-2 md:hidden">
             <motion.button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-lg bg-secondary hover:bg-accent transition-colors duration-200"
+              className="rounded-lg bg-secondary p-2 transition-colors duration-200 hover:bg-accent"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun size={20} className="text-foreground" /> : <Moon size={20} className="text-foreground" />}
+              {theme === 'dark' ? <Sun size={18} className="text-foreground" /> : <Moon size={18} className="text-foreground" />}
             </motion.button>
-            
+
             <button
               className="text-foreground"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -107,13 +104,12 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden py-4 bg-card rounded-lg mt-2 shadow-lg"
+            exit={{ opacity: 0, y: -12 }}
+            className="mt-2 rounded-lg bg-card py-3 shadow-lg md:hidden"
           >
             {navLinks.map((link) => (
               <a
@@ -123,7 +119,7 @@ const Navbar = () => {
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className="block px-4 py-2 text-foreground hover:text-primary hover:bg-secondary transition-colors duration-200"
+                className="block px-4 py-2 text-foreground transition-colors duration-200 hover:bg-secondary hover:text-primary"
               >
                 {link.name}
               </a>

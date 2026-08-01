@@ -7,41 +7,35 @@ const Hero = () => {
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  
-  const texts = [
-    'Full Stack Developer',
-    'Problem Solver',
-    'Tech Enthusiast',
-    'Team Player',
-    'Fast Learner'
-  ];
+
+  const texts = ['Full Stack Developer', 'Backend Engineer', 'Problem Solver', 'UI-focused Builder'];
 
   useEffect(() => {
     const currentText = texts[currentIndex];
-    
+
     if (!isDeleting) {
       if (displayedText.length < currentText.length) {
         const timeout = setTimeout(() => {
           setDisplayedText(currentText.slice(0, displayedText.length + 1));
-        }, 100);
-        return () => clearTimeout(timeout);
-      } else {
-        const timeout = setTimeout(() => {
-          setIsDeleting(true);
-        }, 2000);
+        }, 90);
         return () => clearTimeout(timeout);
       }
-    } else {
-      if (displayedText.length > 0) {
-        const timeout = setTimeout(() => {
-          setDisplayedText(displayedText.slice(0, -1));
-        }, 50);
-        return () => clearTimeout(timeout);
-      } else {
-        setIsDeleting(false);
-        setCurrentIndex((prev) => (prev + 1) % texts.length);
-      }
+
+      const timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, 1800);
+      return () => clearTimeout(timeout);
     }
+
+    if (displayedText.length > 0) {
+      const timeout = setTimeout(() => {
+        setDisplayedText(displayedText.slice(0, -1));
+      }, 45);
+      return () => clearTimeout(timeout);
+    }
+
+    setIsDeleting(false);
+    setCurrentIndex((prev) => (prev + 1) % texts.length);
   }, [displayedText, currentIndex, isDeleting, texts]);
 
   const scrollToProjects = () => {
@@ -54,227 +48,87 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden"
       style={{
         background: 'linear-gradient(135deg, hsl(var(--gradient-start)) 0%, hsl(var(--gradient-end)) 100%)',
       }}
     >
-      {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.08, 1], rotate: [0, 8, 0] }}
+          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute left-[-10%] top-20 h-72 w-72 rounded-full bg-primary/10 blur-3xl"
         />
         <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [90, 0, 90],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
-        />
-        
-        {/* Floating Particles */}
-        {Array.from({ length: 20 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-primary/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0, 1, 0],
-              scale: [0, 1, 0],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-              ease: "easeInOut"
-            }}
-          />
-        ))}
-        
-        {/* Floating Code Symbols */}
-        {['</>', '{}', '[]', '()', '=>'].map((symbol, i) => (
-          <motion.div
-            key={symbol}
-            className="absolute text-primary/10 text-4xl font-mono"
-            style={{
-              left: `${20 + i * 15}%`,
-              top: `${30 + (i % 2) * 40}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              rotate: [0, 5, 0],
-              opacity: [0.1, 0.3, 0.1],
-            }}
-            transition={{
-              duration: 4 + i,
-              repeat: Infinity,
-              delay: i * 0.5,
-              ease: "easeInOut"
-            }}
-          >
-            {symbol}
-          </motion.div>
-        ))}
-        
-        {/* Morphing Geometric Shapes */}
-        <motion.div
-          className="absolute top-1/4 right-1/4 w-32 h-32"
-          animate={{
-            borderRadius: ['20%', '50%', '20%'],
-            rotate: [0, 180, 360],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          style={{
-            background: 'linear-gradient(45deg, hsl(var(--primary)/0.1), hsl(var(--accent)/0.1))',
-            filter: 'blur(1px)'
-          }}
-        />
-        
-        <motion.div
-          className="absolute bottom-1/3 left-1/3 w-24 h-24"
-          animate={{
-            borderRadius: ['50%', '20%', '50%'],
-            rotate: [360, 180, 0],
-            scale: [1, 0.8, 1],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-          style={{
-            background: 'linear-gradient(135deg, hsl(var(--accent)/0.1), hsl(var(--primary)/0.1))',
-            filter: 'blur(1px)'
-          }}
+          animate={{ scale: [1.05, 1, 1.05], rotate: [8, 0, 8] }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute bottom-10 right-[-8%] h-96 w-96 rounded-full bg-accent/10 blur-3xl"
         />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="mx-auto max-w-4xl text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7 }}
           >
+            <div className="mb-6 inline-flex items-center rounded-full border border-primary/20 bg-card/70 px-4 py-2 text-sm font-medium text-muted-foreground backdrop-blur-sm">
+              <span className="mr-2 h-2.5 w-2.5 rounded-full bg-primary" />
+              Available for internships, full-time opportunities, and freelance work
+            </div>
+
             <motion.h1
-              className="text-5xl md:text-7xl font-bold text-foreground mb-6"
-              initial={{ opacity: 0, y: 30 }}
+              className="mb-6 text-5xl font-bold tracking-tight text-foreground md:text-7xl"
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
             >
-              Hi, I'm{' '}
+              Hi, I’m{' '}
               <span className="text-primary">Harshit Agarwal</span>
             </motion.h1>
 
-            <motion.div
-              className="text-xl md:text-2xl text-muted-foreground mb-8"
-              initial={{ opacity: 0, y: 30 }}
+            <motion.p
+              className="mx-auto mb-8 max-w-3xl text-lg text-muted-foreground md:text-2xl"
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
             >
-              A passionate{' '}
+              I am a{' '}
               <span className="font-semibold text-foreground">
-                <span className="inline-block min-w-[200px]">
+                <span className="inline-block min-w-[220px] text-left">
                   {displayedText}
-                  <span className="animate-pulse">|</span>
+                  <span className="ml-1 animate-pulse">|</span>
                 </span>
-              </span>
-              <br />
-              crafting beautiful and functional web experiences
-            </motion.div>
+              </span>{' '}
+              with a strong focus on clean architecture, reliable APIs, and polished user experiences.
+            </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-              initial={{ opacity: 0, y: 30 }}
+              className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.7, delay: 0.45 }}
             >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative"
-              >
-                <motion.div
-                  className="absolute inset-0 bg-primary/20 rounded-full blur-xl"
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.5, 0.8, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                 <Button
                   size="lg"
                   onClick={scrollToProjects}
-                  className="relative bg-primary hover:bg-primary-hover text-primary-foreground font-semibold px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+                  className="rounded-full bg-primary px-7 py-5 text-base font-semibold text-primary-foreground shadow-md transition-all duration-300 hover:bg-primary-hover"
                 >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                    animate={{
-                      x: ['-100%', '100%'],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: 1
-                    }}
-                  />
                   <Eye className="mr-2 h-5 w-5" />
                   View Projects
                 </Button>
               </motion.div>
-              
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative"
-              >
+
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden"
+                  className="rounded-full border border-primary/30 bg-card/70 px-7 py-5 text-base font-semibold text-primary shadow-sm transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
                   asChild
                 >
                   <a href="/resume.pdf" download>
-                    <motion.div
-                      className="absolute inset-0 bg-primary/10"
-                      whileHover={{
-                        scale: [1, 1.1, 1],
-                        opacity: [0, 1, 0],
-                      }}
-                      transition={{
-                        duration: 0.6,
-                        ease: "easeInOut"
-                      }}
-                    />
                     <Download className="mr-2 h-5 w-5" />
                     Download Resume
                   </a>
@@ -284,20 +138,16 @@ const Hero = () => {
           </motion.div>
 
           <motion.div
-            className="mt-16"
+            className="mt-14"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
           >
             <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
             >
-              <ArrowDown className="mx-auto text-primary" size={32} />
+              <ArrowDown className="mx-auto text-primary" size={28} />
             </motion.div>
           </motion.div>
         </div>

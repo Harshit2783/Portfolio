@@ -7,9 +7,7 @@ import {
   Globe,
   Server,
   Terminal,
-  Package,
-  GitBranch,
-  Smartphone,
+  Sparkles,
 } from 'lucide-react';
 
 const Skills = () => {
@@ -18,66 +16,29 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: 'Languages',
+      title: 'Programming Languages',
       icon: Code2,
-      skills: [
-        { name: 'JavaScript', level: 90 },
-        { name: 'TypeScript', level: 85 },
-        { name: 'Python', level: 80 },
-        { name: 'C', level: 75 },
-        { name: 'HTML', level: 95 },
-        { name: 'CSS', level: 90 }
-      ],
-    },
-    {
-      title: 'Frontend',
-      icon: Globe,
-      skills: [
-        { name: 'React', level: 90 },
-        { name: 'Tailwind CSS', level: 85 },
-        { name: 'Responsive Design', level: 88 },
-        { name: 'Framer Motion', level: 75 }
-      ],
+      skills: ['Python', 'C', 'JavaScript', 'SQL'],
     },
     {
       title: 'Backend',
       icon: Server,
-      skills: [
-        { name: 'Node.js', level: 80 },
-        { name: 'Express', level: 75 },
-        { name: 'RESTful APIs', level: 85 },
-        { name: 'Authentication', level: 70 }
-      ],
+      skills: ['Express.js', 'Node.js'],
     },
     {
-      title: 'Database',
+      title: 'Databases',
       icon: Database,
-      skills: [
-        { name: 'MySQL', level: 75 },
-        { name: 'MongoDB', level: 70 },
-        { name: 'Database Design', level: 65 },
-        { name: 'Queries', level: 80 }
-      ],
+      skills: ['MySQL', 'MongoDB'],
     },
     {
-      title: 'Tools',
+      title: 'Concepts',
+      icon: Globe,
+      skills: ['RESTful APIs', 'OOP', 'DBMS Fundamentals', 'Data Structures & Algorithms'],
+    },
+    {
+      title: 'Tools & Platforms',
       icon: Terminal,
-      skills: [
-        { name: 'VS Code', level: 95 },
-        { name: 'Git', level: 85 },
-        { name: 'GitHub', level: 90 },
-        { name: 'Postman', level: 80 },
-        { name: 'npm', level: 85 },
-        { name: 'Vercel', level: 75 }
-      ],
-    },
-    {
-      title: 'Mobile',
-      icon: Smartphone,
-      skills: [
-        { name: 'Progressive Web Apps', level: 70 },
-        { name: 'Mobile-First Design', level: 85 }
-      ],
+      skills: ['Git', 'GitHub', 'Postman', 'Vercel', 'npm'],
     },
   ];
 
@@ -124,67 +85,37 @@ const Skills = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-6xl mx-auto"
         >
-          {skillCategories.map((category, index) => {
+          {skillCategories.map((category) => {
             const Icon = category.icon;
             return (
               <motion.div
                 key={category.title}
                 variants={itemVariants}
                 whileHover={{ y: -8, transition: { duration: 0.2 } }}
-                className="bg-card rounded-2xl p-6 shadow-soft hover:shadow-card transition-all duration-300 border border-border"
+                className="group bg-card/80 backdrop-blur-sm rounded-3xl p-6 shadow-soft hover:shadow-card transition-all duration-300 border border-border/80"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 bg-primary/10 rounded-xl">
-                    <Icon className="text-primary" size={28} />
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="p-3 bg-primary/10 rounded-2xl border border-primary/20">
+                    <Icon className="text-primary" size={24} />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">
+                  <h3 className="text-xl font-semibold text-foreground">
                     {category.title}
                   </h3>
                 </div>
-                <div className="space-y-3">
+
+                <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, skillIndex) => (
-                    <motion.div
-                      key={skill.name}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                      transition={{ delay: skillIndex * 0.1 }}
-                      className="space-y-1"
+                    <motion.span
+                      key={skill}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                      transition={{ delay: skillIndex * 0.08 }}
+                      className="rounded-full border border-primary/15 bg-primary/10 px-3 py-1.5 text-sm font-medium text-foreground/90 shadow-sm transition-all duration-200 group-hover:border-primary/40 group-hover:bg-primary/20"
                     >
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium text-foreground">
-                          {skill.name}
-                        </span>
-                        <span className="text-xs text-muted-foreground">
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div className="w-full bg-secondary rounded-full h-2 overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-                          transition={{ 
-                            duration: 1, 
-                            delay: skillIndex * 0.1 + 0.5,
-                            ease: "easeOut"
-                          }}
-                          className="h-full bg-gradient-to-r from-primary to-accent rounded-full relative"
-                        >
-                          <motion.div
-                            animate={{ 
-                              opacity: [0.5, 1, 0.5],
-                            }}
-                            transition={{ 
-                              duration: 2,
-                              repeat: Infinity,
-                              ease: "easeInOut"
-                            }}
-                            className="absolute inset-0 bg-white/20 rounded-full"
-                          />
-                        </motion.div>
-                      </div>
-                    </motion.div>
+                      {skill}
+                    </motion.span>
                   ))}
                 </div>
               </motion.div>
@@ -196,11 +127,12 @@ const Skills = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-12 text-center"
+          className="mt-12 flex justify-center"
         >
-          <p className="text-muted-foreground text-lg">
-            Always learning and exploring new technologies to stay current in the ever-evolving tech landscape
-          </p>
+          <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/70 px-4 py-2 text-sm text-muted-foreground shadow-sm">
+            <Sparkles size={16} className="text-primary" />
+            Always learning and building with modern tools.
+          </div>
         </motion.div>
       </div>
     </section>

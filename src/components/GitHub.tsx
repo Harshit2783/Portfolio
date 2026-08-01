@@ -83,9 +83,9 @@ const GitHubSection = () => {
                 <div className="flex items-start gap-3">
                   <Github className="text-primary mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <h5 className="font-semibold text-foreground">Larn2Pay</h5>
+                    <h5 className="font-semibold text-foreground">Taskify API</h5>
                     <p className="text-sm text-muted-foreground">
-                      EMI School Fees Collection Web App
+                      JWT-authenticated task management REST API built with Node.js, Express.js, and MongoDB.
                     </p>
                   </div>
                 </div>

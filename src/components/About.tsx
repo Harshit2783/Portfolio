@@ -1,127 +1,97 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import profilePhoto from '@/assets/profile-photo.jpg';
+import { Code2, Database, Server, Sparkles } from 'lucide-react';
 
 const About = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
-  
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
+  const isInView = useInView(ref, { once: true, margin: '-120px' });
+
+  const highlights = ['Problem Solver', 'Team Player', 'Fast Learner'];
+  const strengths = [
+    'Full-stack development with a focus on clean, maintainable code',
+    'REST APIs, authentication, and database-backed applications',
+    'Strong understanding of modern web development workflows',
+  ];
 
   return (
-    <section id="about" className="py-20 bg-background" ref={ref}>
+    <section id="about" className="bg-background py-20" ref={ref}>
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="mb-10 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            About Me
-          </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+          <h2 className="mb-4 text-4xl font-bold text-foreground md:text-5xl">About Me</h2>
+          <div className="mx-auto h-1 w-20 rounded-full bg-primary" />
         </motion.div>
 
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex justify-center"
-              style={{ y }}
-            >
-              <div className="relative">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative z-10"
-                >
-                  <img
-                    src={profilePhoto}
-                    alt="Harshit Agarwal"
-                    className="rounded-2xl shadow-card w-80 h-80 object-cover border-4 border-card"
-                  />
-                </motion.div>
-                <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-2xl -z-10 transform translate-x-4 translate-y-4"></div>
+        <div className="mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="rounded-3xl border border-border/80 bg-card/80 p-8 shadow-soft backdrop-blur-sm md:p-10"
+          >
+            <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+              <div className="space-y-5">
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  Hello! I’m <span className="font-semibold text-foreground">Harshit Agarwal</span>, a Full Stack Developer currently pursuing my degree in Information Technology. I enjoy building practical, user-friendly web applications that combine strong functionality with thoughtful design.
+                </p>
+
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  My journey into software development began with curiosity about how websites work, and it quickly grew into a passion for both frontend and backend development. I enjoy working with modern tools, learning continuously, and creating solutions that are both efficient and easy to maintain.
+                </p>
+
+                <div className="flex flex-wrap gap-3 pt-2">
+                  {highlights.map((trait, index) => (
+                    <motion.span
+                      key={trait}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                      transition={{ delay: 0.3 + index * 0.08 }}
+                      className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-sm font-medium text-foreground"
+                    >
+                      {trait}
+                    </motion.span>
+                  ))}
+                </div>
               </div>
-            </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="space-y-6"
-            >
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Hello! I'm <span className="font-semibold text-foreground">Harshit Agarwal</span>, 
-                a Full Stack Developer currently pursuing my degree in Information Technology. 
-                I'm passionate about creating elegant solutions to complex problems and 
-                building applications that make a difference.
-              </p>
-              
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                My journey in software development began with curiosity about how websites work, 
-                and has evolved into a deep love for both frontend and backend development. 
-                I enjoy working with modern technologies and frameworks, always eager to learn 
-                and implement the latest industry best practices.
-              </p>
+              <div className="rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/10 to-accent/10 p-6">
+                <div className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.25em] text-primary">
+                  <Sparkles size={16} />
+                  Focus Areas
+                </div>
 
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                When I'm not coding, you can find me exploring new technologies, contributing 
-                to open-source projects, or reading tech blogs. I'm currently seeking opportunities 
-                for campus placements where I can contribute my skills and continue growing as a developer.
-              </p>
-
-              <motion.div 
-                className="flex flex-wrap gap-4 pt-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >
-                {['Problem Solver', 'Team Player', 'Fast Learner'].map((trait, index) => (
-                  <motion.div
-                    key={trait}
-                    className="flex items-center gap-2"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                    transition={{ 
-                      duration: 0.5, 
-                      delay: 0.9 + index * 0.1,
-                      type: "spring",
-                      stiffness: 100
-                    }}
-                    whileHover={{ 
-                      scale: 1.05,
-                      transition: { duration: 0.2 }
-                    }}
-                  >
-                    <motion.div 
-                      className="w-3 h-3 bg-primary rounded-full"
-                      animate={isInView ? { 
-                        scale: [1, 1.2, 1],
-                        opacity: [0.7, 1, 0.7]
-                      } : {}}
-                      transition={{ 
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.2
-                      }}
-                    />
-                    <span className="text-foreground font-medium">{trait}</span>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-          </div>
+                <div className="space-y-3">
+                  {[
+                    { icon: Code2, label: 'Frontend & UI', description: 'React, Tailwind, polished interfaces' },
+                    { icon: Server, label: 'Backend APIs', description: 'Node.js, Express.js, secure routes' },
+                    { icon: Database, label: 'Databases', description: 'MongoDB, MySQL, schema design' },
+                  ].map((item, index) => {
+                    const Icon = item.icon;
+                    return (
+                      <motion.div
+                        key={item.label}
+                        initial={{ opacity: 0, x: 12 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 12 }}
+                        transition={{ delay: 0.35 + index * 0.1 }}
+                        className="rounded-xl border border-white/40 bg-card/70 p-3"
+                      >
+                        <div className="flex items-center gap-2">
+                          <Icon size={16} className="text-primary" />
+                          <h3 className="font-semibold text-foreground">{item.label}</h3>
+                        </div>
+                        <p className="mt-1 text-sm text-muted-foreground">{item.description}</p>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
