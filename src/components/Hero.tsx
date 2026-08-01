@@ -128,7 +128,7 @@ const Hero = () => {
                   className="rounded-full border border-primary/30 bg-card/70 px-7 py-5 text-base font-semibold text-primary shadow-sm transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
                   asChild
                 >
-                  <a href="/resume.pdf" download>
+                  <a href="/Harshit_Agarwal.pdf" download>
                     <Download className="mr-2 h-5 w-5" />
                     Download Resume
                   </a>
